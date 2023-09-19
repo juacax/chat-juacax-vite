@@ -28,6 +28,7 @@ const App = () => {
 
   const obtenerDevices = async() => {
     const d = await codeReader.listVideoInputDevices()
+    console.log(d)
     return d;
   }
 
@@ -42,7 +43,7 @@ const App = () => {
     codeReader.format
     setInfoDevice(JSON.stringify(mediaDevices))
     console.log(mediaDevices)
-    codeReader.decodeFromVideoDevice(mediaDevices[device].deviceId,videoRef.current,(result,error)=>{
+    codeReader.decodeFromVideoDevice(undefined,videoRef.current,(result,error)=>{
 
       if(result){
         if(result?.format == 10){
