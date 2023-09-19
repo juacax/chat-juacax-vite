@@ -14,6 +14,8 @@ const App = () => {
   const [barcode, setBarcode] = useState("");
   const [device,setDevice] = useState(0);
   const [cantDevices, setCantDevices] = useState(0);
+  const [infoDevice, setInfoDevice] = useState("");
+  
 
   function cambiarDevice(){
     let camaraActual = device;
@@ -38,7 +40,7 @@ const App = () => {
    
 
     codeReader.format
-    console.log(device)
+    setInfoDevice(mediaDevices)
     console.log(mediaDevices)
     codeReader.decodeFromVideoDevice(mediaDevices[device].deviceId,videoRef.current,(result,error)=>{
 
@@ -64,6 +66,7 @@ const App = () => {
       <h1>Lector de codigos</h1>
       <p>Lectura: {barcode}</p>
       <video ref={videoRef} style={{ width: '100%', height: 'auto' }} />
+      <p>Info: {infoDevice}</p>
     </div>
   );
 }
