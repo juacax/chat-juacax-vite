@@ -40,7 +40,7 @@ const App = () => {
    
 
     codeReader.format
-    setInfoDevice(mediaDevices)
+    setInfoDevice(JSON.stringify(mediaDevices))
     console.log(mediaDevices)
     codeReader.decodeFromVideoDevice(mediaDevices[device].deviceId,videoRef.current,(result,error)=>{
 
