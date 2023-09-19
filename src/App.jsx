@@ -41,9 +41,15 @@ const App = () => {
    
 
     codeReader.format
-    setInfoDevice(JSON.stringify(mediaDevices))
     console.log(mediaDevices)
-    codeReader.decodeFromVideoDevice(undefined,videoRef.current,(result,error)=>{
+      let videoConstraints = {
+        deviceId: { exact: mediaDevices[device].deviceId },
+        width: { min: 640, ideal: 1920 },
+        height: { min: 400, ideal: 1080 },
+      }
+      
+    setInfoDevice(JSON.stringify(videoConstraints))
+    codeReader.decodeFromVideoDevice(videoConstraints,videoRef.current,(result,error)=>{
 
       if(result){
         if(result?.format == 10){
